@@ -18,7 +18,7 @@ export default function Root() {
         <div id="detail">
             <Outlet/>
         </div>
-        {/* <div className="footer">что то внизу</div> */}
+        <div className="footer">что то внизу</div>
         {/* <h3>c днём всех влюблённых</h3>
         <h1>ЛЮБЛЮ ТЕБЯ</h1> */}
     </div>
