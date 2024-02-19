@@ -15,7 +15,7 @@ export default function Root() {
                 
             </div>
         </div>
-        <div id="detail">
+        <div id="detail" className="outlet">
             <Outlet/>
         </div>
         <div className="footer">что то внизу</div>
