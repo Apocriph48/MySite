@@ -13,23 +13,30 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 
 import os
+import environ
+import psycopg2
+
+
+env = environ.Env(
+    DEBUG = (bool, False)
+)
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+environ.Env.read_env(os.path.join( BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l*j1ge)z7*tlm@!j(yupjqe(epm&v1d0^6vy(sk-p5_xm9-nko'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -46,6 +53,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'about_me',
     'portfolio',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -84,11 +92,20 @@ WSGI_APPLICATION = 'MySite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'PORT': env('DB_PORT'),
+        'HOST': env('DB_HOST'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+
     }
 }
 
+# for i in DATABASES['default'] :
+    # print(type(DATABASES['default'][i]), end=' - >')
+    # print([i], end=' - >')
+    # print(DATABASES['default'][i])
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -130,7 +147,8 @@ STATIC_ROOT= BASE_DIR / 'static/'
 
 STATICFILES_DIRS = [
     # BASE_DIR / "static",
-    os.path.join(BASE_DIR, 'frontend', 'build', 'static')
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
+    
 ]
 
 # Default primary key field type

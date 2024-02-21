@@ -7,7 +7,7 @@ export default function Root() {
         <div className="header">
             <div className="navigation">
                 <div className="hrefs">
-                    <NavLink className='nav-href' to={'about_me/'}>Обо мне</NavLink>
+                    <NavLink className='nav-href' to={'aboutme/'}>Обо мне</NavLink>
                     
                     <NavLink className='nav-href' to={'portfolio/'}>Мои работы</NavLink>
                     <NavLink className='nav-href' to={'contacts/'}>Контакты</NavLink>
