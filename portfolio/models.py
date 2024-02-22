@@ -6,9 +6,13 @@ import datetime
 # Create your models here.
 
 class Article(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField('name', max_length=126, blank=True, null=True)
     date_wrote = models.DateField('date_wrote', default=datetime.datetime.now)
     date_of_change = models.DateField('date_of_change', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
     
 
 class PartOfArticle(models.Model):

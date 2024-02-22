@@ -5,5 +5,5 @@ from . import views
 
 
 urlpatterns = [
-    # path('', views.index),
+    path('getarticle/', views.GetArticlesView.as_view()),
 ]
