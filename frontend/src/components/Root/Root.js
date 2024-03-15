@@ -7,7 +7,7 @@ export default function Root() {
         <div className="header">
             <div className="navigation">
                 <div className="hrefs">
-                    <NavLink className='nav-href' to={'aboutme/'}>Обо мне</NavLink>
+                    <NavLink className='nav-href' to={'/'}>Обо мне</NavLink>
                     
                     <NavLink className='nav-href' to={'portfolio/'}>Мои работы</NavLink>
                     <NavLink className='nav-href' to={'contacts/'}>Контакты</NavLink>
@@ -16,10 +16,10 @@ export default function Root() {
             </div>
         </div>
         <div id="detail" className="outlet">
-            <Outlet/>
+            <Outlet />
+            
         </div>
         <div className="footer">что то внизу</div>
-        {/* <h3>c днём всех влюблённых</h3>
-        <h1>ЛЮБЛЮ ТЕБЯ</h1> */}
+        
     </div>
 }

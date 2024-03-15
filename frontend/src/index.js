@@ -8,6 +8,7 @@ import Root from './components/Root/Root';
 import Contacts from './components/contacts/Contacts';
 import AboutMe from './components/AboutMe/AboutMe';
 import Portfolio from './components/portfolio/Portfolio';
+import Article from './components/portfolio/article/Article';
 
 
 const router = createBrowserRouter([
@@ -15,10 +16,17 @@ const router = createBrowserRouter([
   element: <Root/>,
   children: [{path: "contacts/",
       element: <Contacts/>},
-     {path: "aboutme/",
+     {path: "",
       element: <AboutMe/>},
     {path: "portfolio/",
-      element: <Portfolio/>},
+      element: <Portfolio/>,
+        // children: [{path:  ':id/', 
+        // element : <Article/>}] 
+      },
+    {
+      path: "portfolio/:id/",
+      element:<Article/>
+    }
   ]
   },
 ])
