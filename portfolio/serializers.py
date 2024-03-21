@@ -5,19 +5,8 @@ from .models import Article, PartOfArticle
 
 
 
-class ArticleSerializer(serializers.Serializer):
-    id=serializers.IntegerField(read_only=True)
-    name = serializers.CharField(read_only=True)
-    category = serializers.CharField(read_only=True)
-    date_wrote = serializers.DateField(read_only=True)
-    date_of_change = serializers.DateField(read_only=True)
-    part_of_article = serializers.StringRelatedField(many=True) 
-    class Meta:
-        model = Article
-        fields = ('id', 'name','category', 'date_wrote', 'date_of_change', 'part_of_article')
-
 class PartOfArticleSerializer(serializers.Serializer):
-    article = serializers.PrimaryKeyRelatedField(queryset=PartOfArticle.objects.all(),  many=True)
+    article = serializers.PrimaryKeyRelatedField(read_only=True)
     paragraph = serializers.IntegerField()
     image = serializers.ImageField()
     header = serializers.CharField(max_length=126)
@@ -26,7 +15,20 @@ class PartOfArticleSerializer(serializers.Serializer):
 
     class Meta:
         model = PartOfArticle
-        fields = '__all__'
+        fields = ('article', 'paragraph',  'header', 'content')
+
+
+
+class ArticleSerializer(serializers.Serializer):
+    id=serializers.IntegerField(read_only=True)
+    name = serializers.CharField(read_only=True)
+    
+    date_wrote = serializers.DateField(read_only=True)
+    date_of_change = serializers.DateField(read_only=True)
+    part_of_article = PartOfArticleSerializer(many=True) 
+    class Meta:
+        model = Article
+        fields = ('id', 'name', 'date_wrote', 'date_of_change', 'part_of_article')
 
 
 

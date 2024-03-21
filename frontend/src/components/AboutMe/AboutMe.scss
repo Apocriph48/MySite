@@ -5,13 +5,11 @@
     overflow: auto;
     background-color: bisque;
     .about-me-header{
-        // color: red;
+        text-align: center;
     }
     .about-me-content{
-        // min-width: 100%;    
-        // overflow: scroll;
         text-align: justify;
-        margin: 75px 120px 75px 120px; 
+        margin: 25px 120px 75px 120px; 
         .photo-conteiner{            
             img{
                 margin-right: 20px;

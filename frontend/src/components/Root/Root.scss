@@ -5,11 +5,9 @@
     margin: 0;
     position: fixed;
     top: 0;
-    // display: flex;
-    // flex-direction: column;
     .header{
         height: 15%;
-        // display: flex;
+        min-height: 75px;
         position: relative;
         background-color: rgb(254, 255, 239);
         margin: 0;
@@ -20,22 +18,15 @@
             height: 100%;
             display: flex; 
             justify-content: center;
-            
             background-color: rgb(254, 255, 239);
-            
             .hrefs{
                 width: 50%;                
                 display: flex;
-                
                 flex-flow: row nowrap;
                 justify-content: space-around;
-                
                 align-items: stretch;
                 align-content: stretch;
-
-                
                 background-color: rgb(254, 255, 239);
-                
                 .nav-href{
                     color: black;
                     text-decoration: none;
@@ -49,39 +40,24 @@
                     user-select: none;
                     &:first-child{
                         border-left: none;
-
                     }
-                   
                     &:hover{
                         color: rgb(148, 151, 133);
                     }
-
-                    // background-color: aliceblue;
                 }
             }
         }
     }
     .outlet{
-        position: relative;
-        // display: flex;
-        // flex-direction: column;
         width: 100%;
         height: 75%;
-        // top: 0px;
-        // bottom: 50px;
-        overflow: auto;
-        // padding: 0px 0% 30% 0px ; //верх , , , лево
-        
-        // margin-bottom: 50px;
-        
+        overflow-y: scroll;
+        overflow-x: none;
         
     }
     .footer{
         position: fixed;
-        // display: flex;
-        // flex: 0 0 auto;
         width: 100%;
-        // margin-top: -50px;
         height: 10%;
         bottom: 0px;
         background-color: aliceblue;

@@ -13,8 +13,10 @@ class GetArticlesView(APIView):
     def post(self, request, format=None):
         if (request.data):
             print(request.data)
-            qs = Article.objects.all().filter(id=request.data['id'])        
-            serializer = ArticleSerializer(qs, many=True) 
+            prefetch = Prefetch('part_of_article', PartOfArticle.objects.all())
+            qs = Article.objects.all().filter(id=request.data['id']).prefetch_related(prefetch)        
+            serializer = ArticleSerializer(qs, many=True)
+            print(serializer.data) 
             return Response(serializer.data)
         else:
             return Response({})
