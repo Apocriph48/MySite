@@ -19,7 +19,7 @@ class Article(models.Model):
 class PartOfArticle(models.Model):
     article = models.ForeignKey(Article, related_name='part_of_article', on_delete=models.CASCADE)
     paragraph = models.IntegerField('paragraph', blank=True, null=True)
-    image = models.ImageField('image', blank=True, null=True)
+    image = models.ImageField('image', blank=True, null=True, upload_to='images' )
     header = models.CharField('header', blank=True, null=True, max_length=126)
     content = models.TextField('content', blank=True, null=True)
 

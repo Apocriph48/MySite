@@ -6,7 +6,21 @@
     
     background-color: antiquewhite;
     // padding: 20px 100px 0px 100px;
-    
+    .return-to-back{
+        display: flex;
+        height: 90%;
+        position: fixed;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+        
+        background-color: aliceblue;
+        padding: 5px;
+        p{
+            
+        }
+        
+    }
     .article{
         display: flex;
         flex-direction: column;
@@ -19,6 +33,7 @@
         .article-content{
             display: flex;
             flex-direction: column;
+            
             .paragraph-container{
                 display: flex;
                 flex-direction: column;

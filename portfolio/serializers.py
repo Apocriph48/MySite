@@ -15,7 +15,7 @@ class PartOfArticleSerializer(serializers.Serializer):
 
     class Meta:
         model = PartOfArticle
-        fields = ('article', 'paragraph',  'header', 'content')
+        fields = ('article', 'paragraph','image',  'header', 'content')
 
 
 
