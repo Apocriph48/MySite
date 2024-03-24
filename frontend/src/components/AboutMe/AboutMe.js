@@ -1,18 +1,37 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 import './AboutMe.scss'
-import Photo from './../../images/photo.jpg'
-import {loremIpsum } from 'react-lorem-ipsum'
+// import {loremIpsum } from 'react-lorem-ipsum'
+
+
+
 export default function AboutMe(){
-    return <div className="about-me">
-        <h3 className="about-me-header"> AboutME </h3>
-        <div className="about-me-content">
-            <div className="photo-conteiner">
-                {/* <img src={Photo}/> */}
-                <img />
-            </div>
-            <div><text>{loremIpsum({avgWordsPerSentence: 500})}
-                </text></div>
-            
-        </div>
-    </div>
+
+    const [post, setPost] = useState(null)
+    const [toogle, setToogle] = useState(false)
+
+    useEffect(() =>{
+        axios.post('http://localhost:8000/about/', ).then(response =>{
+            setPost(response.data[0])
+        })
+    },[toogle,])
+    
+    function about(){
+        
+        if(post){
+            return <div className="about-me">
+                        <h3 className="about-me-header">{post['header']}</h3>
+                        <div className="about-me-content">
+                            <div className="photo-conteiner">
+                                <img src={'http://127.0.0.1:8000/' + post['photo']}/>
+                                
+                            </div>
+                            <div>
+                                <text>{post['text']}</text>
+                            </div>
+                        </div>
+                    </div>
+        }
+    }
+    return <div className="about-container">{about()}</div>
 }
